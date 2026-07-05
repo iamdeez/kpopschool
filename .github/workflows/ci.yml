@@ -13,9 +13,10 @@ jobs:
         with:
           fetch-depth: 0 # scan-secrets.sh + git grep --untracked want full history/tree
 
+      # No `version:` here — pnpm/action-setup reads it from package.json's
+      # "packageManager" field, and passing both makes recent versions of
+      # this action refuse to run (ERR_PNPM_BAD_PM_VERSION guard).
       - uses: pnpm/action-setup@v4
-        with:
-          version: 9
 
       - uses: actions/setup-node@v4
         with:
@@ -51,9 +52,10 @@ jobs:
           distribution: temurin
           java-version: "17"
 
+      # No `version:` here — pnpm/action-setup reads it from package.json's
+      # "packageManager" field, and passing both makes recent versions of
+      # this action refuse to run (ERR_PNPM_BAD_PM_VERSION guard).
       - uses: pnpm/action-setup@v4
-        with:
-          version: 9
 
       - uses: actions/setup-node@v4
         with:
