@@ -65,6 +65,16 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      # Confirmed via an actual CI run: without this, `pnpm --filter server
+      # run seed` (plain ts-node, not routed through turbo) fails with
+      # "Cannot find module '@kpopschool/shared-types'" — its package.json
+      # points `main`/`types` at `./dist/`, which only exists after a build.
+      # Locally this is masked because `pnpm run typecheck`/`build` (which
+      # depend on "^build" in turbo.json) get run constantly during
+      # development and leave a stale-but-present dist/ sitting around.
+      - name: Build shared-types
+        run: pnpm --filter @kpopschool/shared-types run build
+
       - name: Install Playwright browsers
         run: pnpm --filter web exec playwright install --with-deps chromium
 
