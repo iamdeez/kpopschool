@@ -1,0 +1,19 @@
+# Fly.io deployment config for the NestJS backend, built from the monorepo
+# root using apps/server/Dockerfile. Deploy with:
+#   flyctl deploy --config apps/server/fly.toml --dockerfile apps/server/Dockerfile /path/to/repo/root
+# (run from the repo root so the Dockerfile's monorepo-relative COPY paths resolve)
+app = "kpopschool-portfolio-server"
+primary_region = "nrt"
+
+[build]
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "512mb"
