@@ -5,7 +5,6 @@ import { signInWithDemoToken } from "../firebase/auth";
 import { popmag, popyellowText, popblueText, popmintText, popmagText, brandGray, brandLightGray, cardElevation } from "../theme";
 import { BannerSlider } from "../components/BannerSlider";
 import { ImageCarousel } from "../components/ImageCarousel";
-import kpopBanner from "../assets/Image/K-popBanner.png";
 import banner1 from "../assets/Image/banner1.webp";
 import vocalImage from "../assets/Image/vocal.webp";
 import danceImage from "../assets/Image/dance.webp";
@@ -55,7 +54,11 @@ export function Home() {
       <Stack spacing="190px">
         <Container minW="container.xl">
           <Stack spacing={16}>
-            <BannerSlider images={[kpopBanner, banner1]} />
+            {/* K-popBanner.png (370x127, the topbar-logo asset) was previously
+                reused here as a full-width slide — stretched ~5x past its
+                native size, it rendered visibly blurry. banner1 alone is a
+                real hero-sized asset. */}
+            <BannerSlider images={[banner1]} />
             <Stack spacing={12}>
               <Heading as="h1" fontSize="3xl">
                 Learn K-Pop Dance &amp; Vocal Online
