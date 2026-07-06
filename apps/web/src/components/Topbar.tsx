@@ -19,7 +19,7 @@ export function Topbar() {
 
   return (
     <Stack spacing={0} mb={32}>
-      <Flex py={2} position="fixed" w="100%" bgColor="white" zIndex={100} borderBottomWidth={1}>
+      <Flex py={2} position="fixed" w="100%" bgColor="white" zIndex={100} boxShadow="0 1px 3px rgba(16, 24, 40, 0.08)">
         <Container minW="container.xl">
           <HStack justifyContent="space-between">
             <HStack onClick={() => navigate("/")} cursor="pointer">

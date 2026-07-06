@@ -2,7 +2,7 @@ import { Box, Container, Image, Link as ChakraLink, SimpleGrid, Stack, Tab, TabL
 import { Link as RouterLink } from "react-router-dom";
 import type { Teacher } from "@kpopschool/shared-types";
 import { useTeachers } from "../api/hooks";
-import { popyellowText, popmintText } from "../theme";
+import { popyellowText, popmintText, cardElevation } from "../theme";
 
 function TeacherCard({ teacher }: { teacher: Teacher }) {
   return (
@@ -18,17 +18,9 @@ function TeacherCard({ teacher }: { teacher: Teacher }) {
       // rule and is already descriptive (name + role).
       _hover={{ textDecoration: "none" }}
     >
-      <Stack spacing={1}>
-        <Box aspectRatio={1} w="250px" borderRadius="2xl" overflow="hidden" bgColor="gray.100">
-          <Image
-            src={teacher.profile}
-            alt=""
-            w="full"
-            h="full"
-            objectFit="cover"
-            transition="all 0.2s ease-in-out"
-            _hover={{ transform: "scale(1.1)" }}
-          />
+      <Stack spacing={3} bgColor="white" p={4} {...cardElevation}>
+        <Box aspectRatio={1} borderRadius="lg" overflow="hidden" bgColor="gray.100">
+          <Image src={teacher.profile} alt="" w="full" h="full" objectFit="cover" />
         </Box>
         <Text fontSize="2xl" fontWeight="600">
           {teacher.name}

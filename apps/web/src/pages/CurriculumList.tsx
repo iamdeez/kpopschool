@@ -3,7 +3,7 @@ import { Box, Container, Flex, Image, Link as ChakraLink, SimpleGrid, Skeleton, 
 import { FiChevronRight } from "react-icons/fi";
 import { Link as RouterLink } from "react-router-dom";
 import { useCurriculums } from "../api/hooks";
-import { popmag, popmagText, popmintText } from "../theme";
+import { popmag, popmagText, popmintText, cardElevation } from "../theme";
 import curriculumDance from "../assets/Image/Curriculum_dance.webp";
 import curriculumVocal from "../assets/Image/Curriculum_vocal.webp";
 
@@ -81,7 +81,7 @@ export function CurriculumList() {
         <Skeleton isLoaded={!curriculums.isLoading}>
           <SimpleGrid columns={[1, 2, 3]} spacing={8}>
             {curriculums.data?.map((curriculum) => (
-              <Box key={curriculum.id} p={4} borderWidth={1} borderRadius="xl" overflow="hidden">
+              <Box key={curriculum.id} bgColor="white" p={4} overflow="hidden" {...cardElevation}>
                 <Text fontWeight="bold" fontSize="xl">
                   {curriculum.title}
                 </Text>

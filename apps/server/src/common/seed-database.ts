@@ -1,7 +1,7 @@
 import type { Firestore } from "firebase-admin/firestore";
 import { randomUUID } from "node:crypto";
 import type { Lesson } from "@kpopschool/shared-types";
-import { initialsAvatar, labelThumbnail } from "./placeholder-image";
+import { seedPhoto, labelThumbnail } from "./placeholder-image";
 
 // Mirrors apps/web/src/theme.ts's brand palette (kept as a plain literal
 // here rather than a shared import — this is server-only seed data, not
@@ -65,6 +65,7 @@ export async function seedDatabase(firestore: Firestore): Promise<{
       rating: 4.9,
       review: 2,
       student: 34,
+      photo: "teacher-jiwoo-han.webp",
     },
     {
       category: "Vocal",
@@ -73,6 +74,7 @@ export async function seedDatabase(firestore: Firestore): Promise<{
       rating: 4.7,
       review: 1,
       student: 19,
+      photo: "teacher-minji-seo.webp",
     },
     {
       category: "Dance",
@@ -81,6 +83,7 @@ export async function seedDatabase(firestore: Firestore): Promise<{
       rating: 4.8,
       review: 2,
       student: 41,
+      photo: "teacher-jinho-kang.webp",
     },
     {
       category: "Dance",
@@ -89,6 +92,7 @@ export async function seedDatabase(firestore: Firestore): Promise<{
       rating: 4.6,
       review: 1,
       student: 27,
+      photo: "teacher-areum-choi.webp",
     },
   ] as const;
 
@@ -103,7 +107,7 @@ export async function seedDatabase(firestore: Firestore): Promise<{
         rating: seed.rating,
         review: seed.review,
         student: seed.student,
-        profile: initialsAvatar(seed.name, seed.category === "Vocal" ? BRAND.popmint : BRAND.popmag),
+        profile: seedPhoto(seed.photo),
       }),
     ),
   );

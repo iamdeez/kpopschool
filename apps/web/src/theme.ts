@@ -29,12 +29,43 @@ export const popblueText = "#006b99";
 export const popmintText = "#006661";
 export const popmagText = "#cc006b";
 
+// Shared card elevation treatment (teacher/curriculum/course cards) — flat,
+// borderless content read as unfinished; a subtle shadow + hover lift is the
+// standard "enterprise SaaS" affordance for a clickable card.
+export const cardElevation = {
+  borderRadius: "xl",
+  boxShadow: "0 1px 3px rgba(16, 24, 40, 0.08), 0 1px 2px rgba(16, 24, 40, 0.06)",
+  transition: "box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out",
+  _hover: {
+    boxShadow: "0 4px 12px rgba(16, 24, 40, 0.12), 0 2px 4px rgba(16, 24, 40, 0.08)",
+    transform: "translateY(-2px)",
+  },
+};
+
 export const theme = extendTheme({
   colors: {
     popyellow: { 500: popyellow },
     popblue: { 500: popblue },
     popmint: { 500: popmint },
     popmag: { 500: popmag },
+  },
+  components: {
+    Button: {
+      baseStyle: {
+        borderRadius: "lg",
+        fontWeight: "600",
+      },
+      variants: {
+        solid: {
+          boxShadow: "0 1px 2px rgba(16, 24, 40, 0.08)",
+          transition: "box-shadow 0.2s ease-in-out, transform 0.15s ease-in-out",
+          _hover: {
+            boxShadow: "0 4px 10px rgba(16, 24, 40, 0.16)",
+            transform: "translateY(-1px)",
+          },
+        },
+      },
+    },
   },
   styles: {
     global: {
